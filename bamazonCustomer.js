@@ -63,8 +63,9 @@ function buyItems(product, quantity){
         item_id: product
     }, function(err, res){
         if (err) throw err;
-        var stock = res[0].stock_quantity;
-        var cost = res[0].price * quantity;
+        var stock = parseInt(res[0].stock_quantity);
+        var cost = parseInt(res[0].price) * parseInt(quantity);
+        var product_sales = parseInt(res[0].product_sales) + parseInt(cost);
 
         if (stock >= quantity){
             var remainingStock = stock - quantity;
@@ -78,7 +79,7 @@ function buyItems(product, quantity){
                 console.log("Your total comes to "+cost);
                 connection.query("UPDATE products SET ? WHERE ?",[
                     {
-                        product_sales: cost
+                        product_sales: product_sales
                     },
                     {
                         item_id: product

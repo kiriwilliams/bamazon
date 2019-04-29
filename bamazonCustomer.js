@@ -52,7 +52,7 @@ function userInput(){
     ]).then(function(res){
         var product = res.product;
         var quantity = res.quantity;
-        console.log("buy "+quantity+" units of "+product);
+        console.log("Bought "+quantity+" unit(s).");
         buyItems(product, quantity)
     })
 }
@@ -76,6 +76,14 @@ function buyItems(product, quantity){
             }],function(err, res){
                 if (err) throw err;
                 console.log("Your total comes to "+cost);
+                connection.query("UPDATE products SET ? WHERE ?",[
+                    {
+                        product_sales: cost
+                    },
+                    {
+                        item_id: product
+                    }
+                ])
             });
 
         }

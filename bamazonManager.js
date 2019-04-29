@@ -51,6 +51,7 @@ function menu() {
             case 3:
                 addInventory();
             case 4:
+                addProduct();
         }
     })
 }
@@ -102,7 +103,7 @@ function lowInventory() {
 
 }
 
-function addInventory(){
+function addInventory() {
     var inventory = [];
     connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
@@ -127,28 +128,69 @@ function addInventory(){
             var id = answer.product;
             var newStock = answer.quantity;
 
-          
-            connection.query("SELECT * FROM products WHERE ?",{
+
+            connection.query("SELECT * FROM products WHERE ?", {
                 item_id: id
-            }, function(err, res){
+            }, function (err, res) {
                 if (err) throw err;
 
                 var updatedStock = parseInt(res[0].stock_quantity) + parseInt(newStock);
-                connection.query("UPDATE products SET ? WHERE ?",[
+                connection.query("UPDATE products SET ? WHERE ?", [
                     {
                         stock_quantity: updatedStock
                     },
                     {
                         item_id: id
                     }
-                ], function(err, res){
-                    if(err) throw err;
+                ], function (err, res) {
+                    if (err) throw err;
                     console.log(res)
                 });
 
             })
-            
+
         });
 
+    })
+}
+
+function addProduct() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "Product name: "
+        },
+        {
+            type: "input",
+            name: "dept",
+            message: "Department: "
+        },
+        {
+            type: "input",
+            name: "price",
+            message: "Unit Price: "
+        },
+        {
+            type: "input",
+            name: "quantity",
+            message: "Quantity: "
+        }
+    ]).then(function (answer) {
+        var name = answer.name;
+        var dept = answer.dept;
+        var price = answer.price;
+        var quantity = answer.quantity;
+        connection.query("INSERT INTO products SET ?",
+            {
+                product_name: name,
+                department_name: dept,
+                price: price,
+                stock_quantity: quantity
+            },
+            function (err, res) {
+                if (err) throw err;
+                console.log(res);
+            })
     })
 }

@@ -14,5 +14,5 @@ node bamazonCustomer.js
 ```
 Bamazon customer has two functionalities.
 1. Displays all products available for purchase
-!(https://im.ezgif.com/tmp/ezgif-1-fd68b4ed2a8f.gif)
+![](https://im.ezgif.com/tmp/ezgif-1-fd68b4ed2a8f.gif)
 

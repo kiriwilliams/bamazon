@@ -13,6 +13,30 @@ The customer experience is run with
 node bamazonCustomer.js
 ```
 Bamazon customer has two functionalities.
-1. Displays all products available for purchase
+
+1. Display all products available for purchase
 ![](https://im.ezgif.com/tmp/ezgif-1-fd68b4ed2a8f.gif)
 
+2. Allow the user to make a purchase by specifying the product ID and quantity. The user is then told how much the total cost is.
+![](https://im.ezgif.com/tmp/ezgif-1-451ea75ed890.gif)
+If there is not enough stock remaining to fill the order, the customer is notified.
+![](https://im.ezgif.com/tmp/ezgif-1-3b9aba0b602b.gif)
+
+### Bamazon Manager
+The manager experience is run with 
+```
+node bamazonManager.js
+```
+
+Bamazon Manager has four functionalities.
+
+1. Display all products available for purchase, including stock quantities.
+![](https://im.ezgif.com/tmp/ezgif-1-a9ace6624898.gif)
+
+2. Check which products have low inventory (below 5 remaining).
+![](https://im.ezgif.com/tmp/ezgif-1-274563a4646f.gif)
+
+3. Add inventory to existing products.
+![](https://im.ezgif.com/tmp/ezgif-1-cd6bbc1d0a72.gif)
+
+4. Add new products.

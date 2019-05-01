@@ -50,6 +50,7 @@ function menu() {
                 break;
             case 3:
                 addInventory();
+                break;
             case 4:
                 addProduct();
         }

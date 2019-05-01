@@ -52,7 +52,6 @@ function userInput(){
     ]).then(function(res){
         var product = res.product;
         var quantity = res.quantity;
-        console.log("Bought "+quantity+" unit(s).");
         buyItems(product, quantity)
     })
 }
@@ -77,6 +76,7 @@ function buyItems(product, quantity){
 
 
         if (stock >= quantity){
+            console.log("Bought "+quantity+" unit(s).");
             var remainingStock = stock - quantity;
             connection.query("UPDATE products SET ? WHERE ?",[{
                 stock_quantity: remainingStock,

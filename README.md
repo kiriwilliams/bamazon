@@ -2,7 +2,7 @@
 Node.js application to simulate a store.
 
 ## Install
-Dependencies can be installed by running npm install after downloading package.json.
+Dependencies can be installed by running ```npm install``` after downloading package.json.
 
 ## Usage
 Bamazon is a node application that runs in the terminal. 
